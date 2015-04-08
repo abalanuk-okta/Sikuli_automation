@@ -1,0 +1,179 @@
+
+<html>
+   <head>
+      <style type="text/css">
+         .sikuli-code {
+            font-size: 20px;
+            font-family: "Osaka-mono", Monospace;
+            line-height: 1.5em;
+            display:table-cell;
+            white-space: pre-wrap;       /* css-3 */
+            white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+            white-space: -pre-wrap;      /* Opera 4-6 */
+            white-space: -o-pre-wrap;    /* Opera 7 */
+            word-wrap: break-word;       /* Internet Explorer 5.5+ */
+            width: 99%;   /* remove horizontal scroll-bar when viewing in IE7 */
+         }
+         .sikuli-code img {
+            vertical-align: middle;
+            margin: 2px;
+            border: 1px solid #ccc;
+            padding: 2px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-box-shadow: 1px 1px 1px gray;
+            -webkit-box-shadow: 1px 1px 2px gray;
+         }
+         .kw {
+            color: blue;
+         }
+         .skw {
+            color: rgb(63, 127, 127);
+         }
+
+         .str {
+            color: rgb(128, 0, 0);
+         }
+
+         .dig {
+            color: rgb(128, 64, 0);
+         }
+
+         .cmt {
+            color: rgb(200, 0, 200);
+         }
+
+         h2 {
+            display: inline;
+            font-weight: normal;
+         }
+
+         .info {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: none;
+         }
+
+         a {
+            color: #9D2900;
+         }
+
+         body {
+            font-family: "Trebuchet MS", Arial, Sans-Serif;
+         }
+
+      </style>
+   </head>
+<body>
+<div class="info">
+<h2>sikuli1.sikuli</h2> <a href="sikuli1.zip">(Download this script)</a>
+</div>
+<pre class="sikuli-code">
+<span class="kw">from</span> sikuli.Sikuli <span class="kw">import</span> App, Pattern
+<span class="kw">import</span> string, random
+
+<span class="kw">import</span> unittest
+<span class="kw">import</span> HTMLTestRunner
+
+<span class="kw">def</span> generate_random_string(size=<span class="dig">10</span>, chars=string.ascii_uppercase + string.digits):
+    <span class="kw">return</span> <span class="str">''</span>.join(random.choice(chars) <span class="kw">for</span> _ <span class="kw">in</span> range(size))
+
+project_name = generate_random_string()
+
+<span class="kw">class</span> CreatingProjectTest(unittest.TestCase):
+    <span class="kw">def</span> testA(self):
+        appPath = <span class="str">""</span> <span class="cmt"># should get it from outside</span>
+
+        ftbApp = App(appPath)
+
+        <span class="kw">if</span> <span class="kw">not</span> ftbApp.window():
+            App.open(appPath)
+
+        ftbApp.focus()
+
+        <span class="skw">click</span>(<span class="skw">find</span>(<img src="1428489089975.png" />).nearby(<span class="dig">25</span>).right().<span class="skw">find</span>(<img src="1428489180533.png" />))
+
+        <span class="skw">click</span>(<img src="Screen Shot 2015-04-07 at 1.16.21 PM.png" />)
+
+        <span class="skw">click</span>(<span class="skw">find</span>(<img src="1428487586983.png" />))
+
+        <span class="skw">click</span>(<span class="skw">find</span>(<img src="1428487683959.png" />))
+
+        <span class="skw">type</span>(project_name)
+
+        <span class="skw">click</span>(<span class="skw">find</span>(<img src="1428487891580.png" />))
+
+        <span class="skw">wait</span>(<span class="dig">2</span>)
+
+        <span class="skw">click</span>(<span class="skw">find</span>(<img src="1428488028343.png" />))
+
+        <span class="kw">while</span> <span class="kw">not</span> exists(<img src="1428488098834.png" />):
+            <span class="skw">wait</span>(<span class="dig">1</span>)
+
+        <span class="skw">click</span>(<span class="skw">find</span>(<img src="1428489281730.png" />).nearby(<span class="dig">25</span>).right().<span class="skw">find</span>(<img src="1428488180823.png" />))
+
+        person_name = generate_random_string()
+        <span class="skw">type</span>(person_name)
+
+        <span class="skw">click</span>(<span class="skw">find</span>(Pattern(<img src="1428488759155.png" />).similar(<span class="dig">0.50</span>)))
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+
+        hover(<span class="skw">find</span>(Pattern(<img src="1428489545679.png" />).similar(<span class="dig">0.60</span>)))
+
+        <span class="skw">wait</span>(<span class="dig">1</span>)
+
+        <span class="skw">click</span>(<span class="skw">find</span>(Pattern(<img src="1428489494577.png" />).similar(<span class="dig">0.80</span>)))
+
+        hover(<span class="skw">find</span>(<img src="1428489619025.png" />))
+
+        <span class="skw">click</span>(<span class="skw">find</span>(Pattern(<img src="1428489619025.png" />).similar(<span class="dig">0.80</span>)))
+
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+
+        mother_maiden_name = generate_random_string()
+
+        <span class="skw">type</span>(mother_maiden_name)
+
+        <span class="skw">click</span>(<span class="skw">find</span>(Pattern(<img src="1428488759155.png" />).similar(<span class="dig">0.50</span>)))
+
+        <span class="cmt"># quitting app after testing
+</span>
+        <span class="skw">wait</span>(<span class="dig">3</span>)
+        <span class="skw">click</span>(<span class="skw">find</span>(Pattern(<img src="Screen Shot 2015-04-08 at 12.57.33 PM.png" />).similar(<span class="dig">0.90</span>)))
+        <span class="skw">click</span>(<span class="skw">find</span>(Pattern(<img src="SSQ.png" />).similar(<span class="dig">0.60</span>)))
+
+suite = unittest.TestLoader().loadTestsFromTestCase(CreatingProjectTest)
+outfile = open(<span class="str">"/SikuliReports/%s.html"</span> % (project_name), <span class="str">"w"</span>)
+runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title=<span class="str">' Report Title'</span>, description=<span class="str">'desc..'</span> )
+runner.run(suite)
+outfile.close()
+
+
+<span class="cmt">#click("Screen Shot 2015-04-07 at 1.09.21 PM.png")
+</span>
+
+
+<span class="cmt">#click("Screen Shot 2015-04-07 at 1.04.30 PM.png")
+</span><span class="cmt">#click("Screen Shot 2015-04-07 at 1.06.42 PM.png")
+</span><span class="cmt">#click("Screen Shot 2015-04-07 at 1.18.58 PM.png")
+</span><span class="cmt">#doubleClick("Screen Shot 2015-04-07 at 1.21.30 PM.png")
+</span><span class="cmt">#find("1428402182094.png")
+</span><span class="cmt">#find("1428402244048.png")
+</span>
+<span class="cmt">#popup("Ho!")
+</span>
+<span class="cmt">#Settings.OcrTextRead = True
+</span>
+<span class="cmt">#rcts = findAll("Screen Shot 2015-04-07 at 1.07.04 PM.png")
+</span>
+<span class="cmt">#for rct in rcts:
+</span><span class="cmt">#    print rct.text()
+</span>
+<span class="cmt">#click("1428408333904.png")
+</span>
+<span class="cmt">#type("SikuliTest")
+</span><span class="cmt">#click("Screen Shot 2015-04-07 at 1.07.33 PM.png")</span>
+</pre>
+</body>
+</html>
