@@ -1,13 +1,10 @@
 from sikuli.Sikuli import App, Pattern 
-import string, random
 
 import unittest
 import HTMLTestRunner
+import Helpers
 
-def generate_random_string(size=10, chars=string.ascii_uppercase + string.digits):
-    return ''.join(random.choice(chars) for _ in range(size))
-
-project_name = generate_random_string()
+project_name = Helpers.generate_project_name()
 
 class CreatingProjectTest(unittest.TestCase):
     def testA(self):
@@ -41,7 +38,7 @@ class CreatingProjectTest(unittest.TestCase):
 
         click(find("1428489281730.png").nearby(25).right().find("1428488180823.png"))
 
-        person_name = generate_random_string()
+        person_name = Helpers.generate_random_string()
         type(person_name)
 
         click(find(Pattern("1428488759155.png").similar(0.50)))
@@ -59,7 +56,7 @@ class CreatingProjectTest(unittest.TestCase):
 
         wait(3)
 
-        mother_maiden_name = generate_random_string()
+        mother_maiden_name = Helpers.generate_random_string()
 
         type(mother_maiden_name)
 
@@ -78,28 +75,6 @@ runner.run(suite)
 outfile.close()
 
 
-#click("Screen Shot 2015-04-07 at 1.09.21 PM.png")
 
 
-
-#click("Screen Shot 2015-04-07 at 1.04.30 PM.png")
-#click("Screen Shot 2015-04-07 at 1.06.42 PM.png")
-#click("Screen Shot 2015-04-07 at 1.18.58 PM.png")
-#doubleClick("Screen Shot 2015-04-07 at 1.21.30 PM.png")
-#find("1428402182094.png")
-#find("1428402244048.png")
-
-#popup("Ho!")
-
-#Settings.OcrTextRead = True
-
-#rcts = findAll("Screen Shot 2015-04-07 at 1.07.04 PM.png")
-
-#for rct in rcts:
-#    print rct.text()
-    
-#click("1428408333904.png")
-
-#type("SikuliTest")
-#click("Screen Shot 2015-04-07 at 1.07.33 PM.png")
 

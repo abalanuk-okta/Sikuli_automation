@@ -71,15 +71,12 @@
 </div>
 <pre class="sikuli-code">
 <span class="kw">from</span> sikuli.Sikuli <span class="kw">import</span> App, Pattern
-<span class="kw">import</span> string, random
 
 <span class="kw">import</span> unittest
 <span class="kw">import</span> HTMLTestRunner
+<span class="kw">import</span> Helpers
 
-<span class="kw">def</span> generate_random_string(size=<span class="dig">10</span>, chars=string.ascii_uppercase + string.digits):
-    <span class="kw">return</span> <span class="str">''</span>.join(random.choice(chars) <span class="kw">for</span> _ <span class="kw">in</span> range(size))
-
-project_name = generate_random_string()
+project_name = Helpers.generate_project_name()
 
 <span class="kw">class</span> CreatingProjectTest(unittest.TestCase):
     <span class="kw">def</span> testA(self):
@@ -113,7 +110,7 @@ project_name = generate_random_string()
 
         <span class="skw">click</span>(<span class="skw">find</span>(<img src="1428489281730.png" />).nearby(<span class="dig">25</span>).right().<span class="skw">find</span>(<img src="1428488180823.png" />))
 
-        person_name = generate_random_string()
+        person_name = Helpers.generate_random_string()
         <span class="skw">type</span>(person_name)
 
         <span class="skw">click</span>(<span class="skw">find</span>(Pattern(<img src="1428488759155.png" />).similar(<span class="dig">0.50</span>)))
@@ -131,7 +128,7 @@ project_name = generate_random_string()
 
         <span class="skw">wait</span>(<span class="dig">3</span>)
 
-        mother_maiden_name = generate_random_string()
+        mother_maiden_name = Helpers.generate_random_string()
 
         <span class="skw">type</span>(mother_maiden_name)
 
@@ -148,32 +145,6 @@ outfile = open(<span class="str">"/SikuliReports/%s.html"</span> % (project_name
 runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title=<span class="str">' Report Title'</span>, description=<span class="str">'desc..'</span> )
 runner.run(suite)
 outfile.close()
-
-
-<span class="cmt">#click("Screen Shot 2015-04-07 at 1.09.21 PM.png")
-</span>
-
-
-<span class="cmt">#click("Screen Shot 2015-04-07 at 1.04.30 PM.png")
-</span><span class="cmt">#click("Screen Shot 2015-04-07 at 1.06.42 PM.png")
-</span><span class="cmt">#click("Screen Shot 2015-04-07 at 1.18.58 PM.png")
-</span><span class="cmt">#doubleClick("Screen Shot 2015-04-07 at 1.21.30 PM.png")
-</span><span class="cmt">#find("1428402182094.png")
-</span><span class="cmt">#find("1428402244048.png")
-</span>
-<span class="cmt">#popup("Ho!")
-</span>
-<span class="cmt">#Settings.OcrTextRead = True
-</span>
-<span class="cmt">#rcts = findAll("Screen Shot 2015-04-07 at 1.07.04 PM.png")
-</span>
-<span class="cmt">#for rct in rcts:
-</span><span class="cmt">#    print rct.text()
-</span>
-<span class="cmt">#click("1428408333904.png")
-</span>
-<span class="cmt">#type("SikuliTest")
-</span><span class="cmt">#click("Screen Shot 2015-04-07 at 1.07.33 PM.png")</span>
 </pre>
 </body>
 </html>
