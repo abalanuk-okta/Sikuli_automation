@@ -1,32 +1,26 @@
 from sikuli.Sikuli import App, Pattern 
-import string, random
+from Config import Config
+import Helpers
 import os
+import baseCases 
+reload(baseCases)
 
 import unittest
 import HTMLTestRunner
 
-def generate_random_string(size=10, chars=string.ascii_uppercase + string.digits):
-    return ''.join(random.choice(chars) for _ in range(size))
 
-project_name = generate_random_string()
+project_name = Helpers.generate_random_string()
+
 
 class WelcomeTest(unittest.TestCase):
     
-    def testLogin(self):
-        appPath = "/Volumes/Untitled/Users/abalanuk/Library/Developer/Xcode/DerivedData/FTBmac-bdlxzelqkdzjxseeollhyiidfbzj/Build/Products/Debug/FTBmac.app"
-
-        ftbApp = App(appPath)
-
-        if not ftbApp.window():
-            App.open(appPath)
-                  
-        ftbApp.focus()
-       
+      
         #if not ftbApp.window():
             #print "No FTB window"
         #else:
             #print "FTB app is appeared"
-        
+        baseCases.BaseCases.login()
+                           
         click("1428511211225.png")
         wait("1428511375900.png")
         click(find("1428512393650.png").right(30))
@@ -37,12 +31,13 @@ class WelcomeTest(unittest.TestCase):
         if exists("1428512944589.png"):
             popup("Login was sucessfull")
 
-        #os.remove("/Volumes/Untitled/Users/abalanuk/Library/Application Support/com.myheritage.FTBmac/")
+        baseCases.BaseCases.testLogout()
         
-        
+
+Config.init()
         
 suite = unittest.TestLoader().loadTestsFromTestCase(WelcomeTest)
-outfile = open("/Users/abalanuk/Desktop/Sikuli/Reports/%s.html" % (project_name), "w")
+outfile = open(Config.get_reports_path() + "/%s.html" % (project_name), "w")
 runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title=' Report Title', description='desc..' )
 runner.run(suite)
 outfile.close()
