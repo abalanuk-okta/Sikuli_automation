@@ -19,4 +19,4 @@ class Config:
 
     @classmethod
     def get_user_data_path(cls):
-        return cls.config.get('Paths','user_data')
+    	return '/Users/%s/Library/Application Support/com.myheritage.FTBmac' % (getpass.getuser())
