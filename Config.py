@@ -16,6 +16,3 @@ class Config:
 	@classmethod
 	def get_reports_path(cls):
 		return cls.config.get('Paths', 'reports')
-
-Config.init()
-print Config.get_reports_path()
