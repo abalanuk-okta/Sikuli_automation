@@ -3,19 +3,24 @@ from sikuli.Sikuli import App, Pattern
 import unittest
 import HTMLTestRunner
 import Helpers
+from Config import Config
 
 project_name = Helpers.generate_project_name()
 
-class CreatingProjectTest(unittest.TestCase):
-    def testA(self):
-        appPath = "" # should get it from outside
 
+class CreatingProjectTest(unittest.TestCase):
+    
+    def testA(self):
+        appPath = Config.get_app_path()
+        
         ftbApp = App(appPath)
 
         if not ftbApp.window():
             App.open(appPath) 
 
         ftbApp.focus() 
+
+        wait(3)
 
         click(find("1428489089975.png").nearby(25).right().find("1428489180533.png"))
 
@@ -67,9 +72,11 @@ class CreatingProjectTest(unittest.TestCase):
         wait(3)
         click(find(Pattern("Screen Shot 2015-04-08 at 12.57.33 PM.png").similar(0.90)))
         click(find(Pattern("SSQ.png").similar(0.60)))
-        
+
+Config.init()
+
 suite = unittest.TestLoader().loadTestsFromTestCase(CreatingProjectTest)
-outfile = open("/SikuliReports/%s.html" % (project_name), "w")
+outfile = open(Config.get_reports_path() + "/%s.html" % (project_name), "w")
 runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title=' Report Title', description='desc..' )
 runner.run(suite)
 outfile.close()

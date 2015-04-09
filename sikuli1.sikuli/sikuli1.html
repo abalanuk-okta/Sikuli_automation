@@ -75,12 +75,15 @@
 <span class="kw">import</span> unittest
 <span class="kw">import</span> HTMLTestRunner
 <span class="kw">import</span> Helpers
+<span class="kw">from</span> Config <span class="kw">import</span> Config
 
 project_name = Helpers.generate_project_name()
 
+
 <span class="kw">class</span> CreatingProjectTest(unittest.TestCase):
+
     <span class="kw">def</span> testA(self):
-        appPath = <span class="str">""</span> <span class="cmt"># should get it from outside</span>
+        appPath = Config.get_app_path()
 
         ftbApp = App(appPath)
 
@@ -88,6 +91,8 @@ project_name = Helpers.generate_project_name()
             App.open(appPath)
 
         ftbApp.focus()
+
+        <span class="skw">wait</span>(<span class="dig">3</span>)
 
         <span class="skw">click</span>(<span class="skw">find</span>(<img src="1428489089975.png" />).nearby(<span class="dig">25</span>).right().<span class="skw">find</span>(<img src="1428489180533.png" />))
 
@@ -140,8 +145,10 @@ project_name = Helpers.generate_project_name()
         <span class="skw">click</span>(<span class="skw">find</span>(Pattern(<img src="Screen Shot 2015-04-08 at 12.57.33 PM.png" />).similar(<span class="dig">0.90</span>)))
         <span class="skw">click</span>(<span class="skw">find</span>(Pattern(<img src="SSQ.png" />).similar(<span class="dig">0.60</span>)))
 
+Config.init()
+
 suite = unittest.TestLoader().loadTestsFromTestCase(CreatingProjectTest)
-outfile = open(<span class="str">"/SikuliReports/%s.html"</span> % (project_name), <span class="str">"w"</span>)
+outfile = open(Config.get_reports_path() + <span class="str">"/%s.html"</span> % (project_name), <span class="str">"w"</span>)
 runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title=<span class="str">' Report Title'</span>, description=<span class="str">'desc..'</span> )
 runner.run(suite)
 outfile.close()
