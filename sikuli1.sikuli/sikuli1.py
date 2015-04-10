@@ -11,14 +11,8 @@ project_name = Helpers.generate_project_name()
 class CreatingProjectTest(unittest.TestCase):
     
     def testA(self):
-        appPath = Config.get_app_path()
         
-        ftbApp = App(appPath)
-
-        if not ftbApp.window():
-            App.open(appPath) 
-
-        ftbApp.focus() 
+        baseCases.BaseCases.testOpenApp()
 
         wait(3)
 

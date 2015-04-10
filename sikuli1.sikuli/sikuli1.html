@@ -83,14 +83,8 @@ project_name = Helpers.generate_project_name()
 <span class="kw">class</span> CreatingProjectTest(unittest.TestCase):
 
     <span class="kw">def</span> testA(self):
-        appPath = Config.get_app_path()
 
-        ftbApp = App(appPath)
-
-        <span class="kw">if</span> <span class="kw">not</span> ftbApp.window():
-            App.open(appPath)
-
-        ftbApp.focus()
+        baseCases.BaseCases.testOpenApp()
 
         <span class="skw">wait</span>(<span class="dig">3</span>)
 

@@ -8,9 +8,9 @@ import HTMLTestRunner
 class BaseCases():
 
     @classmethod
-    def login(cls):
+    def testOpenApp(cls):
         
-        # appPath = "~/Users/user/Library/Developer/Xcode/DerivedData/FTBmac-bdlxzelqkdzjxseeollhyiidfbzj/Build/Products/Debug/FTBmac.app"
+        # appPath like "~/Users/username/Library/Developer/Xcode/DerivedData/FTBmac-bdlxzelqkdzjxseeollhyiidfbzj/Build/Products/Debug/FTBmac.app"
         appPath = Config.get_app_path()
         
         ftbApp = App(appPath)
@@ -21,9 +21,13 @@ class BaseCases():
         ftbApp.focus()
 
     @classmethod
-    def testLogout(cls):       
+    def cleanUserData(cls):       
         os.remove(Config.get_user_data_path() + "/LoggedUser.info")
 
-    #def testRunner(self):
-        #suite = unittest.TestLoader().loadTestsFromTestCase(BaseCases)
-        #runner.run(suite)
+    @classmethod
+    def testCloseApp(cls):       
+        appPath = Config.get_app_path()
+
+        ftbApp = App(appPath)
+
+        ftbApp.close()
