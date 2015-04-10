@@ -31,3 +31,14 @@ class BaseCases():
         ftbApp = App(appPath)
 
         ftbApp.close()
+
+    @classmethod
+    def testDoLogin(cls):
+        click("1428511211225.png")
+        wait("1428511375900.png")
+        click(find("1428512393650.png").right(30))
+        type("shahar@testmh.com")
+        click(find("1428512672638.png").right(30))
+        type("236541")
+        click("1428512772486.png")
+

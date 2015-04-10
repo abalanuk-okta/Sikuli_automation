@@ -3,6 +3,8 @@ from sikuli.Sikuli import App, Pattern
 import unittest
 import HTMLTestRunner
 import Helpers
+import baseCases
+reload(baseCases)
 from Config import Config
 
 project_name = Helpers.generate_project_name()
@@ -13,8 +15,19 @@ class CreatingProjectTest(unittest.TestCase):
     def testA(self):
         
         baseCases.BaseCases.testOpenApp()
-
-        wait(3)
+        
+        if exists(Pattern("Login_button.png").similar(0.80)):
+            #baseCases.BaseCases.testDoLogin()
+            click("1428511211225.png")
+            wait("1428511375900.png")
+            click(find("1428512393650.png").right(30))
+            type("shahar@testmh.com")
+            click(find("1428512672638.png").right(30))
+            type("236541")
+            click("1428512772486.png")
+            
+        while not exists(Pattern("Tree_menu_active.png").similar(0.80)):
+            wait(5)
 
         click(find("1428489089975.png").nearby(25).right().find("1428489180533.png"))
 
