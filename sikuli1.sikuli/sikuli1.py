@@ -1,4 +1,4 @@
-from sikuli.Sikuli import App, Pattern 
+from sikuli.Sikuli import * # App, Pattern 
 
 import unittest
 import HTMLTestRunner
@@ -13,22 +13,9 @@ project_name = Helpers.generate_project_name()
 class CreatingProjectTest(unittest.TestCase):
     
     def testA(self):
-        
-        baseCases.BaseCases.testOpenApp()
-        
-        if exists(Pattern("Login_button.png").similar(0.80)):
-            #baseCases.BaseCases.testDoLogin()
-            click("1428511211225.png")
-            wait("1428511375900.png")
-            click(find("1428512393650.png").right(30))
-            type("shahar@testmh.com")
-            click(find("1428512672638.png").right(30))
-            type("236541")
-            click("1428512772486.png")
-            
-        while not exists(Pattern("Tree_menu_active.png").similar(0.80)):
-            wait(5)
 
+        Config.init()
+        wait(12)
         click(find("1428489089975.png").nearby(25).right().find("1428489180533.png"))
 
         click("Screen Shot 2015-04-07 at 1.16.21 PM.png")
@@ -80,13 +67,13 @@ class CreatingProjectTest(unittest.TestCase):
         click(find(Pattern("Screen Shot 2015-04-08 at 12.57.33 PM.png").similar(0.90)))
         click(find(Pattern("SSQ.png").similar(0.60)))
 
-Config.init()
+#Config.init()
 
-suite = unittest.TestLoader().loadTestsFromTestCase(CreatingProjectTest)
-outfile = open(Config.get_reports_path() + "/%s.html" % (project_name), "w")
-runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title=' Report Title', description='desc..' )
-runner.run(suite)
-outfile.close()
+#suite = unittest.TestLoader().loadTestsFromTestCase(CreatingProjectTest)
+#outfile = open(Config.get_reports_path() + "/%s.html" % (project_name), "w")
+#runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title=' Report Title', description='desc..' )
+#runner.run(suite)
+#outfile.close()
 
 
 

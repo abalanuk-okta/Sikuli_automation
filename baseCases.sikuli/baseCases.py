@@ -21,8 +21,11 @@ class BaseCases():
         ftbApp.focus()
 
     @classmethod
-    def cleanUserData(cls):       
-        os.remove(Config.get_user_data_path() + "/LoggedUser.info")
+    def cleanUserData(cls):   
+        try:
+            os.remove(Config.get_user_data_path() + "/LoggedUser.info")
+        except OSError:
+            pass
 
     @classmethod
     def testCloseApp(cls):       
@@ -31,14 +34,3 @@ class BaseCases():
         ftbApp = App(appPath)
 
         ftbApp.close()
-
-    @classmethod
-    def testDoLogin(cls):
-        click("1428511211225.png")
-        wait("1428511375900.png")
-        click(find("1428512393650.png").right(30))
-        type("shahar@testmh.com")
-        click(find("1428512672638.png").right(30))
-        type("236541")
-        click("1428512772486.png")
-

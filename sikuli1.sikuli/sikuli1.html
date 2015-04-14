@@ -70,7 +70,7 @@
 <h2>sikuli1.sikuli</h2> <a href="sikuli1.zip">(Download this script)</a>
 </div>
 <pre class="sikuli-code">
-<span class="kw">from</span> sikuli.Sikuli <span class="kw">import</span> App, Pattern
+<span class="kw">from</span> sikuli.Sikuli <span class="kw">import</span> * <span class="cmt"># App, Pattern </span>
 
 <span class="kw">import</span> unittest
 <span class="kw">import</span> HTMLTestRunner
@@ -86,21 +86,8 @@ project_name = Helpers.generate_project_name()
 
     <span class="kw">def</span> testA(self):
 
-        baseCases.BaseCases.testOpenApp()
-
-        <span class="kw">if</span> exists(Pattern(<img src="Login_button.png" />).similar(<span class="dig">0.80</span>)):
-            <span class="cmt">#baseCases.BaseCases.testDoLogin()
-</span>            <span class="skw">click</span>(<img src="1428511211225.png" />)
-            <span class="skw">wait</span>(<img src="1428511375900.png" />)
-            <span class="skw">click</span>(<span class="skw">find</span>(<img src="1428512393650.png" />).right(<span class="dig">30</span>))
-            <span class="skw">type</span>(<span class="str">"shahar@testmh.com"</span>)
-            <span class="skw">click</span>(<span class="skw">find</span>(<img src="1428512672638.png" />).right(<span class="dig">30</span>))
-            <span class="skw">type</span>(<span class="str">"236541"</span>)
-            <span class="skw">click</span>(<img src="1428512772486.png" />)
-
-        <span class="kw">while</span> <span class="kw">not</span> exists(Pattern(<img src="Tree_menu_active.png" />).similar(<span class="dig">0.80</span>)):
-            <span class="skw">wait</span>(<span class="dig">5</span>)
-
+        Config.init()
+        <span class="skw">wait</span>(<span class="dig">12</span>)
         <span class="skw">click</span>(<span class="skw">find</span>(<img src="1428489089975.png" />).nearby(<span class="dig">25</span>).right().<span class="skw">find</span>(<img src="1428489180533.png" />))
 
         <span class="skw">click</span>(<img src="Screen Shot 2015-04-07 at 1.16.21 PM.png" />)
@@ -152,13 +139,13 @@ project_name = Helpers.generate_project_name()
         <span class="skw">click</span>(<span class="skw">find</span>(Pattern(<img src="Screen Shot 2015-04-08 at 12.57.33 PM.png" />).similar(<span class="dig">0.90</span>)))
         <span class="skw">click</span>(<span class="skw">find</span>(Pattern(<img src="SSQ.png" />).similar(<span class="dig">0.60</span>)))
 
-Config.init()
-
-suite = unittest.TestLoader().loadTestsFromTestCase(CreatingProjectTest)
-outfile = open(Config.get_reports_path() + <span class="str">"/%s.html"</span> % (project_name), <span class="str">"w"</span>)
-runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title=<span class="str">' Report Title'</span>, description=<span class="str">'desc..'</span> )
-runner.run(suite)
-outfile.close()
+<span class="cmt">#Config.init()
+</span>
+<span class="cmt">#suite = unittest.TestLoader().loadTestsFromTestCase(CreatingProjectTest)
+</span><span class="cmt">#outfile = open(Config.get_reports_path() + "/%s.html" % (project_name), "w")
+</span><span class="cmt">#runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title=' Report Title', description='desc..' )
+</span><span class="cmt">#runner.run(suite)
+</span><span class="cmt">#outfile.close()</span>
 </pre>
 </body>
 </html>
