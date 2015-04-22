@@ -139,13 +139,13 @@ project_name = Helpers.generate_project_name()
         <span class="skw">click</span>(<span class="skw">find</span>(Pattern(<img src="Screen Shot 2015-04-08 at 12.57.33 PM.png" />).similar(<span class="dig">0.90</span>)))
         <span class="skw">click</span>(<span class="skw">find</span>(Pattern(<img src="SSQ.png" />).similar(<span class="dig">0.60</span>)))
 
-<span class="cmt">#Config.init()
-</span>
-<span class="cmt">#suite = unittest.TestLoader().loadTestsFromTestCase(CreatingProjectTest)
-</span><span class="cmt">#outfile = open(Config.get_reports_path() + "/%s.html" % (project_name), "w")
-</span><span class="cmt">#runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title=' Report Title', description='desc..' )
-</span><span class="cmt">#runner.run(suite)
-</span><span class="cmt">#outfile.close()</span>
+Config.init()
+
+suite = unittest.TestLoader().loadTestsFromTestCase(CreatingProjectTest)
+outfile = open(Config.get_reports_path() + <span class="str">"/%s.html"</span> % (project_name), <span class="str">"w"</span>)
+runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title=<span class="str">' Report Title'</span>, description=<span class="str">'desc..'</span> )
+runner.run(suite)
+outfile.close()
 </pre>
 </body>
 </html>

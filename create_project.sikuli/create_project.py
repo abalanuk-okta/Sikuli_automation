@@ -1,24 +1,24 @@
-from sikuli.Sikuli import * # App, Pattern 
+from sikuli.Sikuli import *
 
 import unittest
 import HTMLTestRunner
+
 import Helpers
 import baseCases
-reload(baseCases)
 from Config import Config
+from login_positive import *
 
 project_name = Helpers.generate_project_name()
 
+class NewProject(unittest.TestCase):
 
-class CreatingProjectTest(unittest.TestCase):
-    
-    def testA(self):
+    def testCreateProject(self):
+        
+        a = PositiveLoginTest()
+        a.testPositive()
 
-        Config.init()
-        wait(12)
-        click(find("1428489089975.png").nearby(25).right().find("1428489180533.png"))
-
-        click("Screen Shot 2015-04-07 at 1.16.21 PM.png")
+        click(find("Create+.png"))
+        #exit()
 
         click(find("1428487586983.png"))
 
@@ -69,7 +69,7 @@ class CreatingProjectTest(unittest.TestCase):
 
 Config.init()
 
-suite = unittest.TestLoader().loadTestsFromTestCase(CreatingProjectTest)
+suite = unittest.TestLoader().loadTestsFromTestCase(NewProject)
 outfile = open(Config.get_reports_path() + "/%s.html" % (project_name), "w")
 runner = HTMLTestRunner.HTMLTestRunner(stream=outfile, title=' Report Title', description='desc..' )
 runner.run(suite)
