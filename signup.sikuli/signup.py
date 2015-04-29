@@ -64,6 +64,7 @@ class Signup(unittest.TestCase):
         elif exists("1429694868493.png"):
             app.closeApp()
 
+
 Config.init()
 suite = unittest.TestSuite()
 
