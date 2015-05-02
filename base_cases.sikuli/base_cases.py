@@ -23,6 +23,7 @@ class BaseMyHeritageTestCase(object):
 
     def closeApp(self):       
         self._app.close()
+        
 
     def closeAppFromMenu(self):
         click(find(Pattern("FTBmac_menu.png").similar(0.66)))
@@ -161,6 +162,22 @@ class BaseMyHeritageTestCase(object):
             wait(1)
             
         print "Root person was added"
+        
+
+   def switchingProject(self)
+        click(find(Pattern("refresh_icon.png").similar(0.63)).right(20))
+        
+        click(find(Pattern("view_all_projects.png").similar(0.61)))
+        wait(2)
+        current_project = find(Pattern("current_project.png").similar(0.75))
+        another_project_above = current_project.above(10).find(Pattern("another_project.png").similar(0.75))
+        another_project_below = current_project.below(10).find(Pattern("another_project.png").similar(0.75))
+        if exists(another_project_above):
+            click(another_project_above)
+        elif exists(another_project_below):
+            click(another_project_below)
+
+        click(find(Pattern("open_project_button.png").similar(0.71)))
 
     
     @classmethod
