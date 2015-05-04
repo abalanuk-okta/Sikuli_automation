@@ -15,14 +15,14 @@ class SwitchingProjectTestCase(unittest.TestCase):
         def testSwitchingProject(self):
             app = base_cases.BaseMyHeritageTestCase()
             app.openApp()
-            app.loginApp()
+            #app.loginApp()
 
             while not exists("project_ui_elements.png"):
+                wait(1)
+
+            if exists("add_first_person_dialog.png"):
+                click(find(Pattern("cancel_button.png").similar(0.67)))
                 wait(2)
-            add_first_person = Region("add_first_person_dialog.png")
-            if exists(add_first_person):
-                click(add_first_person.inside().find(Pattern("cancel_button.png").similar(0.67)))
-            wait(1)
             
             app.switchingProject()
             

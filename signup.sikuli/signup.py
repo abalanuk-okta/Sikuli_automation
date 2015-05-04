@@ -20,7 +20,7 @@ class SignupTestCase(unittest.TestCase):
         app.signUp()
         if (exists("exists_pwd_not_valid.png") or exists("already_auth.png")):
             click("exit.png")
-            #popup("User is already registered")
+            print "User is already registered"
         elif exists("no_project_found.png"):
             app.closeApp()        
 
