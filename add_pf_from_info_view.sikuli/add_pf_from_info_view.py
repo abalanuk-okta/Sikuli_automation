@@ -1,4 +1,5 @@
 from sikuli.Sikuli import *
+#from org.sikuli.script.natives import Vision
 
 import unittest
 import HTMLTestRunner
@@ -10,6 +11,9 @@ reload(base_cases)
 from Config import Config
 
 project_name = Helpers.generate_project_name()
+# A small value such as 6 makes the matching algorithm be faster.
+# A large value such as 18 makes the matching algorithm be more robust.
+#Vision.setParameter("MinTargetSize", 7) # the default is 12.
 
 class AddPersonalFotoFromInfoTestCase(unittest.TestCase):
 
