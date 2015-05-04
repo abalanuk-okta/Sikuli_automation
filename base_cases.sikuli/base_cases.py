@@ -24,7 +24,11 @@ class BaseMyHeritageTestCase(object):
         self._app.close()
 
     def fullScreenApp(self):
-        type("F",KEY_CTRL,KEY_CMD)
+        type("f",KeyModifier.CMD + KeyModifier.CTRL)
+        wait(2)
+
+    def closeAppByShotkey(self):
+        type("q",KeyModifier.CMD)
            
 
     def closeAppFromMenu(self):
@@ -215,11 +219,14 @@ class BaseMyHeritageTestCase(object):
 
 
     def addPersonalFotoFromInfoView(self):
-        finding_region = Region(398,79,743,450)
-        finding_region.click(Pattern("add_foto_info_view.png").similar(0.60).targetOffset(-1,31))
-        type("1",KEY_CMD)
-        finding_region.click(Pattern("avatar.png").similar(0.77))
-        finding_region.click(Pattern("finder_open_button.png").similar(0.65))
+        while not exists("add_foto_info_view.png"):
+            wait(1)
+
+        click(Pattern("add_foto_info_view.png").similar(0.60).targetOffset(-1,31))
+
+        click(Pattern("avatar.png").similar(0.77))
+        click("finder_open_button.png")
+        click(find("finder_action_chooser.png").inside().find("finder_done.png"))
         
     @classmethod
     def cleanUserData(cls):   
