@@ -228,13 +228,53 @@ class BaseMyHeritageTestCase(object):
         click("finder_open_button.png")
         click(find("finder_action_chooser.png").inside().find("finder_done.png"))
         
+    def addPhotos(self):
+        wait(2)
+        click(find(Pattern("menus_to_photos.png").targetOffset(-138,0)))
+        click(find("add_photos_area.png").inside().find("add_photos_content_button.png"))
+        wait(2)
+        
+        type("G",KeyModifier.CMD + KeyModifier.SHIFT)
+        type(Config.get_media_content_path())
+        type(Key.ENTER)
+
+        finder = find(Pattern("finder_title_bar.png").targetOffset(-11,1))
+        #doubleClick(finder.below(180).find("1430780437381.png"))
+        type("2",KeyModifier.CMD)
+        
+        finder.highlight(1)
+        click(finder)
+        click(find("1430781412816.png").inside().find("1430781446132.png"))
+        type_title = finder.below(100).find("1430789631650.png")
+        click(type_title.below(30))
+        #keyDown(Key.SHIFT)
+        #wait(0.5)
+        #type(Key.Down)
+        #wait(0.5)
+        #type(Key.Down)
+        #keyUp(Key.SHIFT)
+        click(find("1430782780125.png").inside().find("1430782807293.png"))
+        
+        
+       
+        
+        
     @classmethod
     def cleanUserData(cls):   
         try:
-            os.remove(Config.get_user_data_path() + "/LoggedUser.info")
+            os.remove(Config.get_media_content_path() + "/LoggedUser.info")
         except OSError:
             pass
 
+    #@classmethod
+    #def openFilesWithOneExtension(cls):   
+        try:
+            for file in os.listdir(Config.get_media_content_path()):
+                if file.endswith(".jpg"):
+                    os.open(file,'r')
+        except OSError:
+            pass
+        
     #@classmethod
     #def cleanProjectData(cls):   
         try:

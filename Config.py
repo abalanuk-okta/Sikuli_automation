@@ -21,9 +21,9 @@ class Config:
     def get_user_data_path(cls):
     	return '/Users/%s/Library/Application Support/com.myheritage.FTBmac' % (getpass.getuser())
 
-    #@classmethod
-    #def get_project_data_path(cls):
-        #return '/Users/%s/Documents/MyHeritage' % (getpass.getuser())
+    @classmethod
+    def get_media_content_path(cls):
+        return '/Users/%s/Documents/Sikuli_content' % (getpass.getuser())
         
 Config.init()
 
