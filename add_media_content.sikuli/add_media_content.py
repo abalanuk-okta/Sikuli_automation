@@ -19,11 +19,12 @@ class AddMediaContentTestCase(unittest.TestCase):
         
         app.fullScreenApp()
         app.addPhotos()
+
         while not exists("1430789093915.png"):
             wait(1)
             
         print "New foto was added"
-        app.closeApp()
+        #app.closeApp()
         base_cases.BaseMyHeritageTestCase.cleanUserData()
 
         

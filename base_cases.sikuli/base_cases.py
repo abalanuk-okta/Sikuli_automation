@@ -102,64 +102,48 @@ class BaseMyHeritageTestCase(object):
         click("next_button.png")
         while exists("login_spiner.png"):
             wait(1)
-        #waitVanish("login_spiner.png",2)
 
         
         
-    def createProject(self):
-        #while not exists("tree_menu.png"):
-                #wait(3)
-
-        #print "User is logged in successfully"
-        #it's not actual for first start of app when there is no any project
+    def createProjectFromDropDown(self):
         try:
             create = Region(0,0,290,103).find("sync_navigate.png")
         except FindFailed:
             popup("Unable to find Project list drop down menu")
-            
-        #create.highlight(1)
-
-        #if exists(Pattern("title_adding_root_person.png").similar(0.68),2):
-            #click(Pattern("cancel_button.png").similar(0.66))            
-        click(create.inside().find(Pattern("sync_icon.png").similar(0.56)).right(30))
-        
+  
+        create.highlight(1)        
+        click(create.inside().find(Pattern("sync_icon.png").similar(0.56)).right(30))  
         click(Pattern("create_NP_from_list.png").similar(0.64))
-
         wait("start_new_tree.png",3)
-
         click(Pattern("start_new_tree.png").similar(0.65))
-
         click(Pattern("project_name.png").similar(0.59))
 
         type(project_name)
-
         click("next-1.png")
-
         wait(2)
-
         click(Pattern("done.png").similar(0.62))
-
         while not exists(Pattern("person_icon.png").similar(0.54)):
             wait(1)
             
         
 
-    def switchingProject(self):
+    def viewAllProjects(self):
         click(find(Pattern("refresh_icon.png").similar(0.63)).right(20))
         
         click(find(Pattern("view_all_projects.png").similar(0.61)))
         wait(2)
 
+
+            
+    def switchToAnotherProject(self):
         try:
-            project_list = Region(find(Pattern("project_dashboard.png").similar(0.62)))
+            project_list = (find(Pattern("project_dashboard.png").similar(0.62)))
         except FindFailed:
             popup("Unable to find Project list")
             
         project_list.highlight(2)
         print "Project dashboard appeared"
-        current_project = project_list.find("1430577977698.png")
-        current_project.highlight(1)
-        
+
         if exists(current_project.above(10).find(Pattern("another_project.png").similar(0.80))):
             click(current_project.above(10).find(Pattern("another_project.png").similar(0.80)))
         elif exists(current_project.below(10).find(Pattern("another_project.png").similar(0.80))):
@@ -178,7 +162,7 @@ class BaseMyHeritageTestCase(object):
 
 
         
-    def addMemberDetails(self):
+    def addNewMemberDetails(self):
         click(find(Pattern("first_name-1.png").similar(0.62)).right(30))
         person_name = Helpers.generate_random_string()
         type(person_name)
@@ -196,21 +180,13 @@ class BaseMyHeritageTestCase(object):
         click(month)
         click(Pattern("value_month.png").similar(0.59))
         wait(2)
-        #date = month.right(100)
-        #click(date)
-        #wait(1)
-        #click(find("date_drop_down.png").inside().find("1430584640795.png"))
-        #wait(1)
+        #date = month.right(100)click(date)wait(1)click(find("date_drop_down.png").inside().find("1430584640795.png"))wait(1)
         doubleClick(month.right(10))
-        
         type("1984")        
-        
         click(find(Pattern("birth_place.png").similar(0.61)).right(30))
         birth_place = Helpers.generate_random_string()
         type(birth_place)
-
         click(find(Pattern("1428488759155.png").similar(0.50)))
-
         while not exists(Pattern("avatar2.png").similar(0.60)):
             wait(1)
             
@@ -221,38 +197,29 @@ class BaseMyHeritageTestCase(object):
     def addPersonalFotoFromInfoView(self):
         while not exists("add_foto_info_view.png"):
             wait(1)
-
         click(Pattern("add_foto_info_view.png").similar(0.60).targetOffset(-1,31))
-
         click(Pattern("avatar.png").similar(0.77))
         click("finder_open_button.png")
         click(find("finder_action_chooser.png").inside().find("finder_done.png"))
+        
         
     def addPhotos(self):
         wait(2)
         click(find(Pattern("menus_to_photos.png").targetOffset(-138,0)))
         click(find("add_photos_area.png").inside().find("add_photos_content_button.png"))
-        wait(2)
-        
+        wait(1)
         type("G",KeyModifier.CMD + KeyModifier.SHIFT)
         type(Config.get_media_content_path())
         type(Key.ENTER)
-
         finder = find(Pattern("finder_title_bar.png").targetOffset(-11,1))
-        #doubleClick(finder.below(180).find("1430780437381.png"))
         type("2",KeyModifier.CMD)
         
-        finder.highlight(1)
         click(finder)
         click(find("1430781412816.png").inside().find("1430781446132.png"))
-        type_title = finder.below(100).find("1430789631650.png")
-        click(type_title.below(30))
-        #keyDown(Key.SHIFT)
-        #wait(0.5)
-        #type(Key.Down)
-        #wait(0.5)
-        #type(Key.Down)
-        #keyUp(Key.SHIFT)
+        image_files = find(Pattern("images-1.png").similar(0.62).targetOffset(-14,-7))
+        click(image_files)
+        #keyDown(Key.SHIFT)wait(0.5)type(Key.Down)keyUp(Key.SHIFT)
+        
         click(find("1430782780125.png").inside().find("1430782807293.png"))
         
         
