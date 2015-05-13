@@ -45,10 +45,11 @@ class BaseMyHeritageTestCase(object):
         
 
     def signUp(self):
+        wait(2)
         
-        click(Pattern("button_Sign_Up.png").similar(0.69))
+        click(Pattern("button_Sign_Up.png").similar(0.73))
       
-        wait("signup_title.png")
+        wait("signup_title.png",2)
         click(find("first_name.png").right(30))
         type("Test")
             
@@ -77,7 +78,7 @@ class BaseMyHeritageTestCase(object):
         type("California")
 
         click(find("country.png").right(30))
-        click("country_value.png")
+        click("1430892929386.png")
 
         click(find("zip_code.png").right(30))
         type("CA 94107")
@@ -119,6 +120,10 @@ class BaseMyHeritageTestCase(object):
         click(Pattern("project_name.png").similar(0.59))
 
         type(project_name)
+        #if project name is the same as already existing
+        while not exists("next-1.png"):
+            type("_")
+            wait(1)
         click("next-1.png")
         wait(2)
         click(Pattern("done.png").similar(0.62))
@@ -128,7 +133,7 @@ class BaseMyHeritageTestCase(object):
         
 
     def viewAllProjects(self):
-        click(find(Pattern("refresh_icon.png").similar(0.63)).right(20))
+        click(find(Pattern("1430863517810.png").targetOffset(30,0)).right(20))
         
         click(find(Pattern("view_all_projects.png").similar(0.61)))
         wait(2)
@@ -155,10 +160,11 @@ class BaseMyHeritageTestCase(object):
     
     def addNewMember(self):
 
-        Region(436,26,484,626).hover(find("1430579340575.png"))
+        #Region(436,26,484,626).#hover(find(Pattern("1430579340575.png").similar(0.60)))
         click(Pattern("add_new_member.png").targetOffset(0,-1))
+        wait(1)
         #idea to add list of screenshots and click it in cycle
-        click("1430593983615.png")
+        click(Pattern("1430865188351.png").targetOffset(-13,8))
 
 
         
@@ -181,16 +187,16 @@ class BaseMyHeritageTestCase(object):
         click(Pattern("value_month.png").similar(0.59))
         wait(2)
         #date = month.right(100)click(date)wait(1)click(find("date_drop_down.png").inside().find("1430584640795.png"))wait(1)
-        doubleClick(month.right(10))
+        doubleClick("1430894997195.png")
         type("1984")        
         click(find(Pattern("birth_place.png").similar(0.61)).right(30))
         birth_place = Helpers.generate_random_string()
         type(birth_place)
         click(find(Pattern("1428488759155.png").similar(0.50)))
-        while not exists(Pattern("avatar2.png").similar(0.60)):
-            wait(1)
+        #while not exists(Pattern("avatar2.png").similar(0.60)):
+            #wait(1)
             
-        print "Root person was added"
+        #print "Root person was added"
         
 
 
@@ -198,15 +204,24 @@ class BaseMyHeritageTestCase(object):
         while not exists("add_foto_info_view.png"):
             wait(1)
         click(Pattern("add_foto_info_view.png").similar(0.60).targetOffset(-1,31))
+        wait(1)
+        type("G",KeyModifier.CMD + KeyModifier.SHIFT)
+        type(Config.get_media_content_path())
+        type(Key.ENTER)
+        wait(1)
+        type("1",KeyModifier.CMD)
+        
         click(Pattern("avatar.png").similar(0.77))
         click("finder_open_button.png")
-        click(find("finder_action_chooser.png").inside().find("finder_done.png"))
+        wait(2)
+        click(Pattern("1430892422377.png").targetOffset(43,1))
         
         
     def addPhotos(self):
-        wait(2)
-        click(find(Pattern("menus_to_photos.png").targetOffset(-138,0)))
-        click(find("add_photos_area.png").inside().find("add_photos_content_button.png"))
+        while not exists("1430896085134.png"):
+            wait(1)
+        click(Pattern("1430896085134.png"))
+        click(find(Pattern("add_photos_area.png").similar(0.65)).inside().find(Pattern("add_photos_content_button.png").similar(0.65)))
         wait(1)
         type("G",KeyModifier.CMD + KeyModifier.SHIFT)
         type(Config.get_media_content_path())
@@ -235,24 +250,24 @@ class BaseMyHeritageTestCase(object):
 
     #@classmethod
     #def openFilesWithOneExtension(cls):   
-        try:
-            for file in os.listdir(Config.get_media_content_path()):
-                if file.endswith(".jpg"):
-                    os.open(file,'r')
-        except OSError:
-            pass
+        #try:
+            #for file in os.listdir(Config.get_media_content_path()):
+                #if file.endswith(".jpg"):
+                    #os.open(file,'r')
+        #except OSError:
+            #pass
         
     #@classmethod
     #def cleanProjectData(cls):   
-        try:
-            folder_path = Config.get_project_data_path()
-            for file_object in os.listdir(folder_path):
-                file_object_path = os.path.join(folder_path, file_object)
-                if os.path.isfile(file_object_path):
-                    os.unlink(file_object_path)
-                elif os.path.isdir(file_object_path): shutil.rmtree(file_object_path)
-        except Exception, e:
-                print e
+        #try:
+            #folder_path = Config.get_project_data_path()
+            #for file_object in os.listdir(folder_path):
+                #file_object_path = os.path.join(folder_path, file_object)
+                #if os.path.isfile(file_object_path):
+                   # os.unlink(file_object_path)
+                #elif os.path.isdir(file_object_path): shutil.rmtree(file_object_path)
+        #except Exception, e:
+                #print e
 
 
 
